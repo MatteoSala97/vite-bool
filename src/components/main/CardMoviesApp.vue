@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         getStars(){
-            return Math.ceil(this.propsVoteAverage / 2)
+            return Math.ceil(this.movies.avote_average / 2)
         }
     },
 }
@@ -26,7 +26,7 @@ export default {
         <p><span class="fw-bold">Title:</span>  {{ movie.title }}</p>
         <p><span class="fw-bold">Original title:</span>  {{ movie.original_title }}</p>
         <!-- <p><span class="fw-bold">Release Date: </span>{{  }}</p> -->
-        <p><span class="fw-bold">Overview:  </span>{{ movie_overview }}</p>
+        <p><span class="fw-bold">Overview:  </span>{{ movie.overview }}</p>
         <p><span class="fw-bold">
             Rating: 
         </span>
