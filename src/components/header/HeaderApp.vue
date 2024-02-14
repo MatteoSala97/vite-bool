@@ -10,28 +10,32 @@ import { store } from '../../store'
                 }
             },
             methods: {
-                getData(){
+                getMovies(){
                     // this call gets movies
-                    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ed8922d356fa3bff26eccb788ed33b80&query=${store.searchText}`).then( ( res ) => {
+                    axios.get(store.apiUrlMovies + `${store.searchText}`).then( ( res ) => {
                         console.log(res.data.results)
-                        this.store.movies = res.data.results
+                        store.movies = res.data.results
+                        console.log(store.movies)
                     })
-                    // this call gets tv series
-                    axios.get(`https://api.themoviedb.org/3/search/tv?api_key=ed8922d356fa3bff26eccb788ed33b80&query=${store.searchText}`).then((res) =>{
+                },
+                getSeries(){
+                    // this call gets movies
+                    axios.get(store.apiUrlSeries + `${store.searchText}`).then( ( res ) => {
                         console.log(res.data.results)
-                        this.store.series = res.data.results
+                        store.movies = res.data.results
+                        console.log(store.movies)
                     })
                 }
             },
             created(){
-                this.getData()
+                // this.getMovies()
             } 
         }
     
 </script>
 
 <template>
-    <div class="container-fluid d-flex justify-content-around align-items-center py-3 border-bottom ">
+    <div class="container-fluid d-flex justify-content-between align-items-center py-3 border-bottom ">
         <div class="d-flex align-items-center gap-4">
             <a href="#"><img src="../../assets/img/logo.png" alt="Boolflix logo"></a>
             <ul class="d-flex gap-3">
@@ -53,7 +57,7 @@ import { store } from '../../store'
                 aria-describedby="helpId"
                 placeholder="Titles, people, genres"
                 v-model="store.searchText"
-                @keyup.enter="getData"
+                @keyup.enter="getMovies"
             />
             <input
                 name="search-button"
@@ -61,7 +65,7 @@ import { store } from '../../store'
                 class="btn btn-outline-danger"
                 type="button"
                 value="Search"
-                @click="getData"
+                @click="getMovies"
             />
             
         </div>

@@ -11,13 +11,16 @@
         name: "MainApp",
         data(){
             return{
-                    store,
-                    propsApiUrl: String,
-                    propsMovieTitle: String,
-                    propsOriginalTitle: String,
-                    propsMovieOverview: String,
-                    propsVoteAverage: Number,
-                }
+              store,
+              propsApiUrl: String,
+              propsMovieTitle: String,
+              propsOriginalTitle: String,
+              propsMovieOverview: String,
+              propsVoteAverage: Number,
+              propsPoster: String,
+              propsBackdropPoster: String,
+              propsImageApi: String,
+              }
             },
             methods: {
                 
@@ -30,7 +33,7 @@
 </script>
 
 <template>
-    <div class="container">
+    <div class="container-fluid">
     <div class="row">
       <CardApp 
         v-for="(movie, index) in store.movies"
@@ -38,7 +41,9 @@
         :propsMovieTitle="movie.title"
         :propsOriginalTitle="movie.original_title"
         :propsMovieOverview="movie.overview"
-        :PropsVoteAverage="movie.vote_average"
+        :propsVoteAverage="movie.vote_average"
+        :propsPoster="movie.poster_path"
+        :propsImageApi="store.imageApi"
       />
     </div>
   </div>

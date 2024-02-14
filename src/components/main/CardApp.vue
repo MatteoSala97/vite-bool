@@ -12,7 +12,10 @@ export default {
         "propsMovieTitle",
         "propsOriginalTitle",
         "propsMovieOverview",
-        "PropsVoteAverage",
+        "propsVoteAverage",
+        "propsPoster",
+        "propsBackdropPoster",
+        "propsImageApi"
     ],
     data(){
         return{
@@ -21,19 +24,20 @@ export default {
         },
         methods: {
             getStars(){
-                let stars = Math.ceil(this.propsVoteAverage / 2)
-                console.log(stars)
+            // console.log("propsVoteAverage:", this.propsVoteAverage);
+            return Math.ceil(this.propsVoteAverage / 2)
             }
         },
         created(){
-            this.getStars()
+            // console.log("propsVoteAverage in created hook:", this.propsVoteAverage);
         }
     }
 
 </script>
 
 <template>
-    <div class="col-2 position-relative">  
+    <div class="col-2">  
+        <img :src="propsImageApi + `w500` + propsPoster" alt="">
         <p><span class="fw-bold">Title:</span>  {{ propsMovieTitle }}</p>
         <p><span class="fw-bold">Original title:</span>  {{ propsOriginalTitle }}</p>
         <!-- <p><span class="fw-bold">Release Date: </span>{{  }}</p> -->
@@ -45,7 +49,7 @@ export default {
         :star-size="15"
         :read-only="true"
         :glow="10"
-        :rating="0.01"
+        :rating="getStars()"
         :animate="true"
         />
         </p>
