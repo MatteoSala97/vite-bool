@@ -14,7 +14,7 @@ export default {
     methods: {
         getStars(){
         // console.log("propsVoteAverage:", this.propsVoteAverage);
-        return Math.ceil(this.vote_average / 2)
+        return Math.ceil(this.series.vote_average / 2)
         }
     }
 }
