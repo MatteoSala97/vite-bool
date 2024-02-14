@@ -1,51 +1,46 @@
 <script>
 
-    import CardApp from '../main/CardApp.vue'
-    import {store} from '../../store'
-    import axios from 'axios'
+import CardMoviesApp from '../main/CardMoviesApp.vue'
+import CardSeriesApp from '../main/CardSeriesApp.vue'
 
-    export default {
-        components: {
-            CardApp
-        },
-        name: "MainApp",
-        data(){
-            return{
-              store,
-              propsApiUrl: String,
-              propsMovieTitle: String,
-              propsOriginalTitle: String,
-              propsMovieOverview: String,
-              propsVoteAverage: Number,
-              propsPoster: String,
-              propsBackdropPoster: String,
-              propsImageApi: String,
-              }
-            },
-            methods: {
-                
-            },
-            created(){
-                
-            }
+import {store} from '../../store'
+
+export default {
+    components: {
+        CardMoviesApp,
+        CardSeriesApp,
+    },
+    name: "MainApp",
+    data(){
+        return{
+          store,
+        }
+      },
     }
 
 </script>
 
 <template>
     <div class="container-fluid">
+
     <div class="row">
-      <CardApp 
-        v-for="(movie, index) in store.movies"
-        :propsApiUrl="store.apiUrl"
-        :propsMovieTitle="movie.title"
-        :propsOriginalTitle="movie.original_title"
-        :propsMovieOverview="movie.overview"
-        :propsVoteAverage="movie.vote_average"
-        :propsPoster="movie.poster_path"
-        :propsImageApi="store.imageApi"
-      />
+      <h2 class="py-3 fs-1">Movies:</h2>
+      <CardMoviesApp 
+        v-for="(movie, index) in store.movies" 
+        :key="'movie-'+index" 
+        :movie="movie" 
+        :moviesImageApi="store.imageApi"
+        />
     </div>
+    <div class="row">
+        <h2 class="py-3 fs-1">Series: </h2>
+        <CardSeriesApp
+        v-for="(series, index) in store.series"
+        :key="'series-' +index"
+        :series="series"
+        :seriesImageApi="store.imageApi"
+        />
+      </div>
   </div>
 </template>
 

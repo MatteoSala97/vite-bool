@@ -10,25 +10,25 @@ import { store } from '../../store'
                 }
             },
             methods: {
-                getMovies(){
+                getData(){
                     // this call gets movies
                     axios.get(store.apiUrlMovies + `${store.searchText}`).then( ( res ) => {
                         console.log(res.data.results)
                         store.movies = res.data.results
                         console.log(store.movies)
                     })
-                },
-                getSeries(){
-                    // this call gets movies
+
+                    // this call gets tv series
                     axios.get(store.apiUrlSeries + `${store.searchText}`).then( ( res ) => {
                         console.log(res.data.results)
-                        store.movies = res.data.results
-                        console.log(store.movies)
+                        store.series = res.data.results
+                        console.log(store.series)
                     })
-                }
+                },
             },
             created(){
                 // this.getMovies()
+                // this.getSeries()
             } 
         }
     
@@ -57,7 +57,7 @@ import { store } from '../../store'
                 aria-describedby="helpId"
                 placeholder="Titles, people, genres"
                 v-model="store.searchText"
-                @keyup.enter="getMovies"
+                @keyup.enter="getData"
             />
             <input
                 name="search-button"
@@ -65,7 +65,7 @@ import { store } from '../../store'
                 class="btn btn-outline-danger"
                 type="button"
                 value="Search"
-                @click="getMovies"
+                @click="getData"
             />
             
         </div>
