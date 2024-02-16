@@ -91,12 +91,13 @@ export default {
         padding: 20px;
         opacity: 0;
         transition: opacity 0.3s;
+        overflow-y: auto;
     }
     .poster-container:hover .poster-overlay{
         opacity:1;
     }
     #overview{
-        font-size: 14px;
+        font-size: 20px;
     }
 }
 </style>
