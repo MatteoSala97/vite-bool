@@ -16,6 +16,12 @@ export default {
           store,
         }
       },
+      methods: {
+        // onSearch(){
+        //   this.$emit("search-made")
+        // }
+        
+      }
     }
 
 </script>

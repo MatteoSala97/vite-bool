@@ -25,6 +25,9 @@ import { store } from '../../store'
                         console.log(store.series)
                     })
                 },
+                refreshPage(){
+                    window.location.reload()
+                }
             },
             created(){
                 // this.getMovies()
@@ -37,7 +40,7 @@ import { store } from '../../store'
 <template>
     <div class="container-fluid d-flex justify-content-between align-items-center py-3 border-bottom ">
         <div class="d-flex align-items-center gap-4">
-            <a href="#"><img src="../../assets/img/logo.png" alt="Boolflix logo"></a>
+            <a href="#"><img src="../../assets/img/logo.png" alt="Boolflix logo" @click="refreshPage"></a>
             <ul class="d-flex gap-3">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Tv Series</a></li>
