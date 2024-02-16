@@ -33,7 +33,7 @@ export default {
         />
     </div>
     <div class="row">
-        <h2 class="py-3 fs-1">Series: </h2>
+        <h2 class="py-3 fs-1">TV Series: </h2>
         <CardSeriesApp
         v-for="(series, index) in store.series"
         :key="'series-' +index"
